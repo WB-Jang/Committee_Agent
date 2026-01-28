@@ -33,5 +33,5 @@ EXPOSE 8501
 ENV PYTHONUNBUFFERED=1
 
 # 9. 실행 명령어
-# src 폴더 내의 app.py를 실행합니다.
-CMD ["streamlit", "run", "src/app.py", "--server.port=8501", "--server.address=0.0.0.0"]
+# src 폴더 내의 app.py를 실행합니다. WORKDIR이 app/src로 설정되어 있으므로, app.py로 바로 실행
+CMD ["streamlit", "run", "app.py", "--server.port=8501", "--server.address=0.0.0.0"]

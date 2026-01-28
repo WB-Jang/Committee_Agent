@@ -1,0 +1,9 @@
+# 이미지 빌드 시 불필요한 파일들 list-up
+.git
+.gitignore
+.env
+__pycache__
+*.pyc
+venv
+.venv
+.DS_Store

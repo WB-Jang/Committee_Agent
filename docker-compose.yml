@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # 1. 메인 AI 앱 서비스
+  app:
+    build: .                        # 현재 폴더의 Dockerfile로 빌드
+    container_name: committee_agent_app
+    restart: unless-stopped         # 에러가 나도 자동으로 재시작
+    ports:
+      - "8501:8501"                 # 로컬호스트 접속용
+    env_file:
+      - .env                        # 환경변수 파일 연결
+    networks:
+      - committee_net
+
+  # 2. 외부 접속용 Ngrok 서비스 (공식 이미지 사용)
+  ngrok:
+    image: ngrok/ngrok:latest
+    container_name: committee_agent_tunnel
+    restart: unless-stopped
+    command:
+      # "app"이라는 서비스의 8501 포트를 인터넷에 연결하라는 명령
+      - "http"
+      - "app:8501"
+    environment:
+      # .env 파일에 있는 토큰을 가져다 씀
+      NGROK_AUTHTOKEN: ${NGROK_AUTH_TOKEN}
+    ports:
+      - "4040:4040"                 # Ngrok 상태 확인용 웹 UI
+    networks:
+      - committee_net
+    depends_on:
+      - app                         # 앱이 켜진 후에 실행됨
+
+networks:
+  committee_net:
+    driver: bridge
