@@ -13,8 +13,8 @@ RUN apt-get update && apt-get install -y \
     curl \
     && rm -rf /var/lib/apt/lists/*
 
-# 3. 작업 디렉토리 설정
-WORKDIR /app
+# 3. 작업 디렉토리 설정 -> 작업 디렉토리를 app.py와 이와 연동된 프로그램들이 위치한 src 폴더로 변경함. 이에 따라, .env 파일도 src 내부로 들어와야함
+WORKDIR /app/src
 
 # 4. Python 라이브러리 설치
 COPY requirements.txt .
