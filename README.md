@@ -22,4 +22,11 @@
 ### 터미널을 꺼도 서버는 계속 돌아갑니다.
 ```
 docker-compose up -d --build
+
+```
+
+## 외부 접속 URL 확인 방법
+```
+웹 브라우저로 확인 : 내 컴퓨터 http://localhost:4040 에 접속
+Status 항목 -> https://xxxx-xxxx.ngrok-free.app가 외부에서 접속 가능한 주소
 ```
