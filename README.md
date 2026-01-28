@@ -11,8 +11,13 @@
 .
 ├── src/                # 소스 코드 디렉토리
 │   ├── app.py          # Streamlit 메인 진입점
-│   └── ...
+│   ├── pdf_converter.py   
+│   ├── read_docx_util.py        
+│   ├── highlighting.py
+│   └── sample_data/
+├── run_streamlit.py    # docker 배포 시 미사용, Ngrok 공식 이미지를 통해 외부 url 터널 연결
 ├── Dockerfile          # 도커 빌드 설정 (LibreOffice + 한글폰트 포함)
+├── docker-compose.yml  # 서버용 Docker 배포
 ├── requirements.txt    # 의존성 목록
 └── .env                # (필수) API Key 설정 파일
 ```
